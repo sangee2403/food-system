@@ -4,12 +4,12 @@
 //  File: backend/config/database.php
 // ══════════════════════════════════════════════════════════════
 
-define('DB_HOST',     'localhost');
-define('DB_PORT',     3306);
-define('DB_NAME',     'annapoorna_db');
-define('DB_USER',     'root');          // Change to your MySQL username
-define('DB_PASS',     '');              // Change to your MySQL password
-define('DB_CHARSET',  'utf8mb4');
+define('DB_HOST', 'sql113.infinityfree.com');
+define('DB_PORT', 3306);
+define('DB_NAME', 'if0_41906544_XXX');
+define('DB_USER', 'if0_41906544');
+define('DB_PASS', 'sangeesugu');
+define('DB_CHARSET', 'utf8mb4');
 
 define('APP_NAME',    'Annapoorna');
 define('APP_VERSION', '1.0.0');

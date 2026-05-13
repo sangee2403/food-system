@@ -7,7 +7,7 @@
 // ══════════════════════════════════════════════════════════════
 
 const USE_PHP_BACKEND = true; // ← Set to TRUE when your PHP server is running
-const API_BASE = '/food-system/backend/index.php'; // Adjust path if needed
+const API_BASE = 'https://food-system.infinityfreeapp.com/backend/index.php'; // Adjust path if needed
 
 // ── API REQUEST HELPER ────────────────────────────────────────
 async function apiRequest(endpoint, action, method = 'GET', body = null) {

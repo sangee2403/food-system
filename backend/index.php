@@ -1,6 +1,6 @@
 <?php
 // ══════════════════════════════════════════════════════════════
-//  ANNAPOORNA – API ROUTER
+//  M.S. Pandi – API ROUTER
 //  File: backend/index.php
 //  Usage: /backend/?endpoint=auth&action=login
 // ══════════════════════════════════════════════════════════════
@@ -23,7 +23,7 @@ if (isset($map[$endpoint])) {
 } else {
     jsonResponse([
         'success' => true,
-        'message' => 'Annapoorna API v1.0',
+        'message' => 'M.S. Pandi API v1.0',
         'endpoints' => array_keys($map),
         'docs'    => 'See README.md for full API documentation',
     ]);
