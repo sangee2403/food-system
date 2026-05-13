@@ -1,6 +1,6 @@
 <?php
 // ══════════════════════════════════════════════════════════════
-//  ANNAPOORNA – REVIEWS API
+//  M.S. Pandi – REVIEWS API
 //  File: backend/api/reviews.php
 //  Routes:
 //    GET  list    – public list (optionally ?food_id=N)

@@ -1,6 +1,6 @@
 <?php
 // ══════════════════════════════════════════════════════════════
-//  ANNAPOORNA – ADMIN API
+//  M.S. Pandi – ADMIN API
 //  File: backend/api/admin.php
 //  Routes:
 //    GET  dashboard – summary stats

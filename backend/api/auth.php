@@ -1,6 +1,6 @@
 <?php
 // ══════════════════════════════════════════════════════════════
-//  ANNAPOORNA – AUTH API
+//  M.S. Pandi – AUTH API
 //  File: backend/api/auth.php
 //  Routes handled by ?action= query param:
 //    POST register  – create new account

@@ -1,6 +1,6 @@
 <?php
 // ══════════════════════════════════════════════════════════════
-//  ANNAPOORNA – ORDERS API
+//  M.S. Pandi – ORDERS API
 //  File: backend/api/orders.php
 //  Routes:
 //    POST place      – authenticated user places order

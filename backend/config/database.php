@@ -1,19 +1,17 @@
 <?php
 // ══════════════════════════════════════════════════════════════
-//  ANNAPOORNA – DATABASE CONFIGURATION
+//  M.S. Pandi – DATABASE CONFIGURATION
 //  File: backend/config/database.php
 // ══════════════════════════════════════════════════════════════
 
 define('DB_HOST', 'sql113.infinityfree.com');
-define('DB_PORT', 3306);
 define('DB_NAME', 'if0_41906544_XXX');
 define('DB_USER', 'if0_41906544');
 define('DB_PASS', 'sangeesugu');
-define('DB_CHARSET', 'utf8mb4');
 
-define('APP_NAME',    'Annapoorna');
+define('APP_NAME',    'M.S. Pandi');
 define('APP_VERSION', '1.0.0');
-define('JWT_SECRET',  'annapoorna_secret_key_2024_change_this');
+define('JWT_SECRET',  'M.S. Pandi_secret_key_2024_change_this');
 define('BCRYPT_COST', 12);
 
 // ── PDO SINGLETON ─────────────────────────────────────────────

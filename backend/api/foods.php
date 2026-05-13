@@ -1,6 +1,6 @@
 <?php
 // ══════════════════════════════════════════════════════════════
-//  ANNAPOORNA – FOODS API
+//  M.S. Pandi – FOODS API
 //  File: backend/api/foods.php
 //  Routes:
 //    GET  list           – all active foods (optionally ?category=morning)

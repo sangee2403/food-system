@@ -1,5 +1,5 @@
 // ══════════════════════════════════════════════════════════════
-//  ANNAPOORNA – ADMIN PHP API CONNECTOR
+//  M.S. Pandi – ADMIN PHP API CONNECTOR
 //  File: js/admin-api.js
 //  Overrides localStorage-based admin functions with PHP API calls.
 //  Set USE_PHP_ADMIN = true when your backend is running.

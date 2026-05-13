@@ -1,5 +1,5 @@
 -- ══════════════════════════════════════════════════════════════
---  ANNAPOORNA – SOUTH INDIAN FOOD MANAGEMENT SYSTEM
+--  M.S. Pandi – SOUTH INDIAN FOOD MANAGEMENT SYSTEM
 --  MySQL Database Schema
 --  Version: 1.0.0
 -- ══════════════════════════════════════════════════════════════
