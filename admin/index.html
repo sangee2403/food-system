@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel – M.S. Pandi</title>
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+</head>
+<body>
+
+<!-- ══════════════════════════════════ -->
+<!-- ADMIN LOGIN SCREEN -->
+<!-- ══════════════════════════════════ -->
+<div id="adminLogin" style="
+height:100vh;
+width:100%;
+background:linear-gradient(135deg,#1A0A00,#3D1E00);
+display:flex;
+align-items:center;
+justify-content:center;
+padding:24px;
+position:fixed;
+top:0;
+left:0;
+">
+  <div style="background:white;border-radius:24px;width:100%;max-width:400px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.5)">
+    <div style="background:linear-gradient(135deg,#FF6B1A,#E85D04);padding:40px 32px;text-align:center">
+      <div style="font-size:3rem;margin-bottom:12px">⚙️</div>
+      <h2 style="font-family:'Playfair Display',serif;color:white;font-size:1.8rem;margin-bottom:6px">Admin Panel</h2>
+      <p style="color:rgba(255,255,255,0.7);font-size:0.85rem">M.S. Pandi Nadar Hotel South Indian Kitchen</p>
+    </div>
+    <div style="padding:32px">
+<form id="adminLoginForm" novalidate>
+          <div class="form-group" style="margin-bottom:16px">
+          <label class="form-label">Username</label>
+          <input type="text" id="adUser" class="form-input" placeholder="admin" value="admin" required>
+        </div>
+        <div class="form-group" style="margin-bottom:24px">
+          <label class="form-label">Password</label>
+          <input type="password" id="adPass" class="form-input" placeholder="••••••••" value="admin123" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:14px">Login to Admin Panel →</button>
+      </form>
+      <p style="text-align:center;margin-top:16px;font-size:0.78rem;color:#9A7B5C">Default: admin / admin123</p>
+      <p style="text-align:center;margin-top:8px"><a href="../index.html" style="color:#FF6B1A;font-size:0.82rem;text-decoration:none">← Back to Main Site</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════ -->
+<!-- ADMIN APP -->
+<!-- ══════════════════════════════════ -->
+<div id="adminApp" class="hidden" style="display:flex;height:100vh;overflow:hidden">
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-logo"> 
+      <div class="sidebar-logo-icon">🍛</div>
+      <div class="sidebar-logo-text">
+        <div class="brand">M.S. Pandi</div>
+        <div class="role">Admin Panel</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">Main</div>
+      <button class="sidebar-link active" data-panel="dashboard"><span class="icon">📊</span> Dashboard</button>
+
+      <div class="nav-section">Management</div>
+      <button class="sidebar-link" data-panel="users"><span class="icon">👥</span> Users</button>
+      <button class="sidebar-link" data-panel="foods"><span class="icon">🍛</span> Food Items</button>
+      <button class="sidebar-link" data-panel="orders"><span class="icon">📋</span> Orders</button>
+      <button class="sidebar-link" data-panel="payments"><span class="icon">💳</span> Payments</button>
+      <button class="sidebar-link" data-panel="reviews"><span class="icon">⭐</span> Reviews</button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-avatar" id="adminInitial">A</div>
+        <div class="sidebar-user-info">
+          <div class="name" id="adminName">Admin</div>
+          <div class="role">Super Admin</div>
+        </div>
+      </div>
+      <button class="btn btn-sm" onclick="adminLogout()" 
+  style="width:100%;justify-content:center;
+  background:rgba(255,255,255,0.08);
+  color:rgba(255,255,255,0.65);
+  border-radius:8px;cursor:pointer">
+  Logout
+</button>
+      <div style="margin-top:12px;text-align:center">
+        <a href="../index.html" style="color:rgba(255,255,255,0.4);font-size:0.75rem;text-decoration:none">← Visit Main Site</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN AREA -->
+  <main class="admin-main">
+
+    <!-- TOPBAR -->
+    <div class="admin-topbar">
+      <div class="topbar-title" id="topbarTitle">Dashboard</div>
+      <div class="topbar-actions">
+        <div style="font-size:0.8rem;color:#9A7B5C">South Indian Food Management System</div>
+        <button class="topbar-btn" onclick="location.reload()">🔄</button>
+      </div>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- ══════════ DASHBOARD PANEL ══════════ -->
+      <div class="admin-panel active" id="panel-dashboard">
+
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-card-info">
+              <div class="label">Total Revenue</div>
+              <div class="value" id="statRevenue" style="color:#FF6B1A">₹0</div>
+            </div>
+            <div class="stat-card-icon">💰</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-info">
+              <div class="label">Total Orders</div>
+              <div class="value" id="statOrders">0</div>
+            </div>
+            <div class="stat-card-icon">📋</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-info">
+              <div class="label">Registered Users</div>
+              <div class="value" id="statUsers">0</div>
+            </div>
+            <div class="stat-card-icon">👥</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-info">
+              <div class="label">Menu Items</div>
+              <div class="value" id="statFoods">0</div>
+            </div>
+            <div class="stat-card-icon">🍛</div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+<div class="chart-row">
+            <div class="chart-box">
+            <h4>Revenue (Last 7 Days)</h4>
+            <div class="bar-chart" id="revenueChart">
+              <div style="color:#9A7B5C;padding:40px;text-align:center;width:100%">Loading chart...</div>
+            </div>
+          </div>
+          <div class="chart-box">
+            <h4>Top Ordered Items</h4>
+            <div id="topItemsList">
+              <p style="color:#9A7B5C;font-size:0.85rem">No orders yet</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders -->
+        <div class="table-card">
+          <div class="table-header">
+            <h3>Recent Orders</h3>
+            <button class="btn btn-sm btn-outline" data-panel="orders">View All</button>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
+              <tbody id="recentOrdersBody"><tr><td colspan="6" style="text-align:center;padding:30px;color:#9A7B5C">No orders yet</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ USERS PANEL ══════════ -->
+      <div class="admin-panel" id="panel-users">
+        <div class="table-card">
+          <div class="table-header">
+            <h3>Registered Users <span id="userCount" style="font-size:0.8rem;color:#9A7B5C;font-weight:400"></span></h3>
+            <input type="text" id="userSearch" class="table-search" placeholder="Search users..." oninput="searchUsers()">
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Phone</th><th>Joined</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="usersBody"><tr><td colspan="7" style="text-align:center;padding:30px;color:#9A7B5C">No users registered yet</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ FOODS PANEL ══════════ -->
+      <div class="admin-panel" id="panel-foods">
+        <div class="table-card">
+          <div class="table-header">
+            <h3>Food Items Management</h3>
+            <button class="btn btn-primary btn-sm" onclick="openAddFood()">+ Add Food Item</button>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>Name</th><th>Category</th><th>Price</th><th>Type</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="foodsBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ ORDERS PANEL ══════════ -->
+      <div class="admin-panel" id="panel-orders">
+        <div class="table-card">
+          <div class="table-header">
+            <h3>Order Management <span id="orderCount" style="font-size:0.8rem;color:#9A7B5C;font-weight:400"></span></h3>
+            <input type="text" id="orderSearch" class="table-search" placeholder="Search orders..." oninput="filterOrders()">
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th><th>Date</th></tr></thead>
+              <tbody id="ordersBody"><tr><td colspan="7" style="text-align:center;padding:30px;color:#9A7B5C">No orders yet</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ PAYMENTS PANEL ══════════ -->
+      <div class="admin-panel" id="panel-payments">
+        <div style="display:grid;grid-template-columns:3fr 1fr;gap:24px;margin-bottom:24px">
+          <div class="table-card">
+            <div class="table-header"><h3>Payment Records</h3></div>
+            <div style="overflow-x:auto">
+              <table class="data-table">
+                <thead><tr><th>Payment ID</th><th>Order ID</th><th>Customer</th><th>Method</th><th>Amount</th><th>Status</th><th>Date</th></tr></thead>
+                <tbody id="paymentsBody"><tr><td colspan="7" style="text-align:center;padding:30px;color:#9A7B5C">No payments yet</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="chart-box">
+            <h4>Payment Breakdown</h4>
+            <div id="payBreakdown">
+              <p style="color:#9A7B5C;font-size:0.85rem">No payment data</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════ REVIEWS PANEL ══════════ -->
+      <div class="admin-panel" id="panel-reviews">
+        <div style="display:grid;grid-template-columns:3fr 1fr;gap:24px">
+          <div class="table-card">
+            <div class="table-header">
+              <h3>Customer Reviews <span id="reviewCount" style="font-size:0.8rem;color:#9A7B5C;font-weight:400"></span></h3>
+              <select id="reviewRatingFilter" class="table-search" style="width:160px" onchange="filterReviews()">
+                <option value="">All Ratings</option>
+                <option value="5">⭐⭐⭐⭐⭐ 5 Stars</option>
+                <option value="4">⭐⭐⭐⭐ 4 Stars</option>
+                <option value="3">⭐⭐⭐ 3 Stars</option>
+                <option value="2">⭐⭐ 2 Stars</option>
+                <option value="1">⭐ 1 Star</option>
+              </select>
+            </div>
+            <div style="overflow-x:auto">
+              <table class="data-table">
+                <thead><tr><th>#</th><th>Customer</th><th>Food Item</th><th>Rating</th><th>Review</th><th>Date</th><th>Action</th></tr></thead>
+                <tbody id="reviewsBody"><tr><td colspan="7" style="text-align:center;padding:30px;color:#9A7B5C">No reviews yet</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="chart-box" style="height:fit-content">
+            <h4>Rating Distribution</h4>
+            <div id="ratingDist">
+              <p style="color:#9A7B5C;font-size:0.85rem">No review data</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- admin-content -->
+  </main>
+</div><!-- adminApp -->
+
+<!-- ══════════ FOOD MODAL ══════════ -->
+<div class="modal-overlay" id="foodModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="foodModalTitle">Add Food Item</h3>
+      <button class="modal-close" onclick="document.getElementById('foodModal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="foodForm">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+          <div class="form-group">
+            <label class="form-label">Food Name *</label>
+            <input type="text" id="fName" class="form-input" placeholder="e.g. Masala Dosa" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Emoji Icon</label>
+            <input type="text" id="fEmoji" class="form-input" placeholder="e.g. 🍛">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select id="fCategory" class="form-select" required>
+              <option value="morning">Morning</option>
+              <option value="afternoon">Afternoon</option>
+              <option value="evening">Evening</option>
+              <option value="night">Night</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Price (₹) *</label>
+            <input type="number" id="fPrice" class="form-input" placeholder="0" min="1" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Type *</label>
+            <select id="fType" class="form-select" required>
+              <option value="veg">Vegetarian</option>
+              <option value="non-veg">Non-Vegetarian</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Status</label>
+            <select id="fStatus" class="form-select">
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:20px">
+          <label class="form-label">Description</label>
+          <textarea id="fDesc" class="form-textarea" placeholder="Short description of the food item..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Save Food Item</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-container" id="adminToast"></div>
+
+<script src="../js/admin.js"></script>
+</body>
+</html>
